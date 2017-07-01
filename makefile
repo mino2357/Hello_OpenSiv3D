@@ -1,21 +1,18 @@
-CXX = /usr/local/bin/clang++-3.8 
+CXX = /usr/local/bin/clang++ 
 TARGET = Main
 CXXFLAGS = -std=c++1z -Wall -Wextra -O2 -I/usr/local/include
 LDFLAGS = -L/usr/local/lib
-LDLIBS=-lm -lpng -lSiv3D -lboost_filesystem -lboost_system -lfreetype -lturbojpeg -lz -lGLEW -lharfbuzz -lc++
+LDLIBS = -lm -lpng -lSiv3D -lboost_filesystem -lboost_system -lfreetype -lturbojpeg -lz -lGLEW -lharfbuzz -lc++
 SRCS = Main.cpp 
-OBJS :=$(SRCS:.cpp=.o)
+OBJS := $(SRCS:.cpp=.o)
 
 all:$(TARGET)
 
 # $(TARGET): $(OBJS)
 #		$(CXX) $(LDLIBS) -o $@ $(OBJS)
 
+run: all
+	./$(TARGET)
 
-#run: all
-#	./$(TARGET)
-#
-#	all: clean $(TARGET)
-#
 clean:
 	rm $(TARGET)
